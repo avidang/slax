@@ -1,11 +1,9 @@
 import Config
 
-password = System.get_env("SLAX_DB_PASSWORD")
-
 # Configure your database
 config :slax, Slax.Repo,
   username: "postgres",
-  password: password,
+  password: "postgres",
   hostname: "localhost",
   database: "slax_dev",
   stacktrace: true,
