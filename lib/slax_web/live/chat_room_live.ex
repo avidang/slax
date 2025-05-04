@@ -10,7 +10,7 @@ defmodule SlaxWeb.ChatRoomLive do
     {:ok,
      socket
      |> assign(:room, room)
-     |> assign(hide_topic?: false)}
+     |> assign(:hide_topic?, &(!&1))}
   end
 
   def render(assigns) do
@@ -22,7 +22,10 @@ defmodule SlaxWeb.ChatRoomLive do
             #{@room.name}
           </h1>
           <div
-            class={["text-xs leading-none h-3.5 cursor-default select-none", @hide_topic? && "text-slate-600"]}
+            class={[
+              "text-xs leading-none h-3.5 cursor-default select-none",
+              @hide_topic? && "text-slate-600"
+            ]}
             phx-click="toggle_topic"
           >
             <%= if @hide_topic? do %>
